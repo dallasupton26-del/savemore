@@ -1,0 +1,225 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SaveMore | Spend Smarter. Keep More.</title>
+
+<style>
+
+* { box-sizing: border-box; }
+
+body {
+
+  margin: 0;
+
+  font-family: Arial, sans-serif;
+
+  background: #f6faf7;
+
+  color: #183328;
+
+}
+
+header {
+
+  padding: 20px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  background: white;
+
+}
+
+.logo {
+
+  font-size: 25px;
+
+  font-weight: bold;
+
+  color: #147a50;
+
+}
+
+.hero {
+
+  text-align: center;
+
+  padding: 90px 20px;
+
+}
+
+.hero h1 {
+
+  font-size: 48px;
+
+  margin-bottom: 15px;
+
+}
+
+.hero h1 span { color: #168052; }
+
+.hero p {
+
+  color: #65766c;
+
+  line-height: 1.7;
+
+  max-width: 450px;
+
+  margin: auto;
+
+}
+
+button {
+
+  background: #147a50;
+
+  color: white;
+
+  border: none;
+
+  padding: 15px 25px;
+
+  border-radius: 9px;
+
+  font-weight: bold;
+
+  margin-top: 25px;
+
+  cursor: pointer;
+
+}
+
+.features {
+
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+
+  gap: 18px;
+
+  padding: 25px;
+
+  max-width: 1000px;
+
+  margin: auto;
+
+}
+
+.feature {
+
+  background: white;
+
+  padding: 25px;
+
+  border-radius: 15px;
+
+  box-shadow: 0 4px 20px #00000008;
+
+}
+
+.feature h3 { color: #147a50; }
+
+footer {
+
+  text-align: center;
+
+  padding: 40px;
+
+  color: #819087;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">SaveMore.</div>
+
+  <div>AI Savings Assistant</div>
+
+</header>
+
+<section class="hero">
+
+  <h1>Spend Smarter.<br><span>Keep More.</span></h1>
+
+  <p>
+
+    Your personal AI savings assistant.
+
+    Discover better deals, reduce everyday
+
+    expenses, and take control of your money.
+
+  </p>
+
+  <button onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+
+    Explore SaveMore
+
+  </button>
+
+</section>
+
+<section class="features" id="features">
+
+  <div class="feature">
+
+    <h3>✦ AI Assistant</h3>
+
+    <p>Get personalized ideas to save money.</p>
+
+  </div>
+
+  <div class="feature">
+
+    <h3>⌕ Price Finder</h3>
+
+    <p>Discover cheaper alternatives before buying.</p>
+
+  </div>
+
+  <div class="feature">
+
+    <h3>↓ Bill Saver</h3>
+
+    <p>Find opportunities to reduce monthly bills.</p>
+
+  </div>
+
+  <div class="feature">
+
+    <h3>◎ Grocery Saver</h3>
+
+    <p>Make your grocery budget go further.</p>
+
+  </div>
+
+</section>
+
+<footer>
+
+  © 2026 SaveMore. Spend smarter. Keep more.
+
+</footer>
+
+</body>
+
+</html>
