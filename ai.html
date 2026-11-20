@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SaveMore AI</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f8f4;
+  color: #183328;
+}
+header {
+  background: white;
+  padding: 20px;
+  font-size: 23px;
+  font-weight: bold;
+  color: #147a50;
+}
+main {
+  max-width: 700px;
+  margin: 35px auto;
+  padding: 15px;
+}
+h1 { text-align: center; }
+.subtitle {
+  text-align: center;
+  color: #718077;
+}
+.chat {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 25px;
+  min-height: 350px;
+  box-shadow: 0 5px 25px #00000008;
+}
+#messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.message {
+  padding: 13px;
+  border-radius: 12px;
+  max-width: 90%;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+.ai {
+  background: #eaf5ed;
+  align-self: flex-start;
+}
+.user {
+  background: #147a50;
+  color: white;
+  align-self: flex-end;
+}
+.input-area {
+  display: flex;
+  gap: 8px;
+  margin-top: 25px;
+}
+input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px;
+  border: 1px solid #dce7df;
+  border-radius: 9px;
+  font-size: 15px;
+}
+button {
+  background: #147a50;
+  color: white;
+  border: none;
+  border-radius: 9px;
+  padding: 12px 17px;
+  font-weight: bold;
+}
+.note {
+  font-size: 11px;
+  color: #819087;
+  text-align: center;
+  margin-top: 15px;
+}
+</style>
+</head>
+<body>
+
+<header>SaveMore.</header>
+
+<main>
+<h1>Meet SaveMore AI ✦</h1>
+<p class="subtitle">
+Your personal assistant for finding ways to save money.
+</p>
+
+<div class="chat">
+  <div id="messages">
+    <div class="message ai">
+      Hello! I'm SaveMore AI.
+
+      What would you like to save money on today?
+    </div>
+  </div>
+
+  <form class="input-area" id="chatForm">
+    <input id="question"
+      placeholder="Ask me how to save money..."
+      autocomplete="off" required>
+    <button type="submit">Send</button>
+  </form>
+
+  <p class="note">
+    Demo mode: responses are examples, not verified savings advice.
+  </p>
+</div>
+</main>
+
+<script>
+const form = document.getElementById("chatForm");
+const input = document.getElementById("question");
+const messages = document.getElementById("messages");
+
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const question = input.value.trim();
+  if (!question) return;
+
+  addMessage(question, "user");
+  input.value = "";
+
+  setTimeout(function() {
+    const response =
+      "Here is how we can start saving money:\n\n" +
+      "1. Identify your biggest monthly expenses.\n" +
+      "2. Compare available alternatives.\n" +
+      "3. Look for unnecessary recurring charges.\n" +
+      "4. Set a realistic monthly savings goal.\n\n" +
+      "Tell me more about your situation so I can " +
+      "help you create a personalized plan.\n\n" +
+      "(This is a demonstration response. Real AI coming soon!)";
+
+    addMessage(response, "ai");
+  }, 600);
+});
+
+function addMessage(text, type) {
+  const message = document.createElement("div");
+  message.className = "message " + type;
+  message.textContent = text;
+  messages.appendChild(message);
+  message.scrollIntoView({behavior: "smooth"});
+}
+</script>
+
+</body>
+</html>
