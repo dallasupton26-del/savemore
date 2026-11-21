@@ -162,7 +162,7 @@ try {
 
 } catch (error) {
   loading.textContent =
-    "Sorry, SaveMore couldn't connect to AI.";
+    "AI error: " + error.message;
   console.error(error);
 }
 
