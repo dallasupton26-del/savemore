@@ -173,7 +173,7 @@ function addMessage(text, type) {
   message.className = "message " + type;
   message.textContent = text;
   messages.appendChild(message);
-  message.scrollIntoView({behavior: "smooth"});
+  message.scrollIntoView({behavior: "smooth"});return message;
 }
 </script>
 
