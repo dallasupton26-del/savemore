@@ -110,12 +110,12 @@ Your personal assistant for finding ways to save money.
   <form class="input-area" id="chatForm">
     <input id="question"
       placeholder="Ask me how to save money..."
-      autocomplete="off" required>
+      autocomplete="off" maxlength="1000" required>
     <button type="submit">Send</button>
   </form>
 
   <p class="note">
-    Demo mode: responses are examples, not verified savings advice.
+    Demo mode: SaveMore can make mistakes. Check prices and offers before buying.
   </p>
 </div>
 </main>
@@ -150,7 +150,9 @@ try {
       message: question
     })
   });
-
+  if (result.status === 429) {
+    throw new Error("Too many requests. Wait a minute and try again.");
+  }
   const data = await result.json();
 
   if (!result.ok) {
