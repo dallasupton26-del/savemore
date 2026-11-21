@@ -6,15 +6,13 @@ export default async function handler(req, res) {
     });
   }
 
-  // Temporary safety limit for testing
-  const allowedMessage =
-    "How can I save $100 on groceries every month?";
+    const message = typeof req.body?.message === "string"
+    ? req.body.message.trim()
+    : "";
 
-  const message = req.body?.message;
-
-  if (message !== allowedMessage) {
-    return res.status(403).json({
-      error: "SaveMore is in limited testing mode"
+  if (!message || message.length > 1000) {
+    return res.status(400).json({
+      error: "Enter a savings question between 1 and 1,000 characters."
     });
   }
 
