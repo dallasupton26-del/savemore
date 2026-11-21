@@ -125,7 +125,7 @@ const form = document.getElementById("chatForm");
 const input = document.getElementById("question");
 const messages = document.getElementById("messages");
 
-form.addEventListener("submit", function(event) {
+form.addEventListener("submit", async function(event) {
   event.preventDefault();
 
   const question = input.value.trim();
@@ -134,19 +134,38 @@ form.addEventListener("submit", function(event) {
   addMessage(question, "user");
   input.value = "";
 
-  setTimeout(function() {
-    const response =
-      "Here is how we can start saving money:\n\n" +
-      "1. Identify your biggest monthly expenses.\n" +
-      "2. Compare available alternatives.\n" +
-      "3. Look for unnecessary recurring charges.\n" +
-      "4. Set a realistic monthly savings goal.\n\n" +
-      "Tell me more about your situation so I can " +
-      "help you create a personalized plan.\n\n" +
-      "(This is a demonstration response. Real AI coming soon!)";
+  
+const loading = addMessage(
+  "SaveMore is thinking...",
+  "ai"
+);
 
-    addMessage(response, "ai");
-  }, 600);
+try {
+  const result = await fetch("/api/chat", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message: question
+    })
+  });
+
+  const data = await result.json();
+
+  if (!result.ok) {
+    throw new Error(data.error || "AI request failed");
+  }
+
+  loading.textContent = data.reply ||
+    "Sorry, I couldn't generate a response.";
+
+} catch (error) {
+  loading.textContent =
+    "Sorry, SaveMore couldn't connect to AI.";
+  console.error(error);
+}
+
 });
 
 function addMessage(text, type) {
